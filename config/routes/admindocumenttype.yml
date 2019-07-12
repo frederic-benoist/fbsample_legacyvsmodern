@@ -1,0 +1,108 @@
+#
+# 2013-2019 Frédéric BENOIST
+#
+# NOTICE OF LICENSE
+#
+# This source file is subject to the Academic Free License (AFL 3.0)
+# Use, copy, modification or distribution of this source file without written
+# license agreement from Frédéric BENOIST is strictly forbidden.
+#
+# INFORMATION SUR LA LICENCE D'UTILISATION
+#
+# L'utilisation de ce fichier source est soumise a une licence Academic Free License (AFL 3.0)
+# Toute utilisation, reproduction, modification ou distribution du present
+# fichier source sans contrat de licence ecrit de Frédéric BENOIST est
+# expressement interdite.
+#
+#  @author    Frédéric BENOIST
+#  @copyright 2013-2019 Frédéric BENOIST <https://www.fbenoist.com>
+#  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+#
+
+# Index
+fbsample_legacyvsmodern_admindocumenttype_index:
+    path: /fbsample_legacyvsmodern/admindocumenttype
+    methods: [GET]
+    defaults:
+        _controller: 'FBenoist\FbSampleLegacyVsModern\Controller\AdminDocumentTypeController::indexAction'
+        _legacy_controller: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_link: 'AdminDocumentTypeControllerLegacyClass'
+
+# Search
+fbsample_legacyvsmodern_admindocumenttype_search:
+    path: /fbsample_legacyvsmodern/admindocumenttype
+    methods: [POST]
+    defaults:
+        _controller: 'FBenoist\FbSampleLegacyVsModern\Controller\AdminDocumentTypeController::searchAction'
+        _legacy_controller: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_link: 'AdminDocumentTypeControllerLegacyClass'
+
+# Add
+fbsample_legacyvsmodern_admindocumenttype_add:
+    path: /fbsample_legacyvsmodern/admindocumenttype/add
+    methods: [GET]
+    defaults:
+        _controller: 'FBenoist\FbSampleLegacyVsModern\Controller\AdminDocumentTypeController::addAction'
+        _legacy_controller: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_link: 'AdminDocumentTypeControllerLegacyClass'
+
+# Add (Insert)
+fbsample_legacyvsmodern_admindocumenttype_insert:
+    path: /fbsample_legacyvsmodern/admindocumenttype/add
+    methods: [POST]
+    defaults:
+        _controller: 'FBenoist\FbSampleLegacyVsModern\Controller\AdminDocumentTypeController::addAction'
+        _legacy_controller: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_link: 'AdminDocumentTypeControllerLegacyClass'
+
+# Edit
+fbsample_legacyvsmodern_admindocumenttype_edit:
+    path: /fbsample_legacyvsmodern/admindocumenttype/{recordId}/edit
+    methods: [GET]
+    defaults:
+        _controller: 'FBenoist\FbSampleLegacyVsModern\Controller\AdminDocumentTypeController::editAction'
+        _legacy_controller: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_link: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_parameters:
+            id_documenttype: recordId
+    requirements:
+      recordId: \d+
+
+# Edit (Update)
+fbsample_legacyvsmodern_admindocumenttype_update:
+    path: /fbsample_legacyvsmodern/admindocumenttype/{recordId}/edit
+    methods: [POST]
+    defaults:
+        _controller: 'FBenoist\FbSampleLegacyVsModern\Controller\AdminDocumentTypeController::editAction'
+        _legacy_controller: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_link: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_parameters:
+            id_documenttype: recordId
+    requirements:
+      recordId: \d+
+
+ # Toggle active
+fbsample_legacyvsmodern_admindocumenttype_active_toggle:
+    path: /fbsample_legacyvsmodern/admindocumenttype/{recordId}/toggle_active
+    methods: [POST]
+    defaults:
+        _controller: 'FBenoist\FbSampleLegacyVsModern\Controller\AdminDocumentTypeController::toggleActiveAction'
+        _legacy_controller: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_link: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_parameters:
+            id_documenttype: recordId
+    requirements:
+      recordId: \d+
+
+# Delete
+fbsample_legacyvsmodern_admindocumenttype_delete:
+    path: /fbsample_legacyvsmodern/admindocumenttype/{recordId}/delete
+    methods: [GET]
+    defaults:
+        _controller: 'FBenoist\FbSampleLegacyVsModern\Controller\AdminDocumentTypeController::deleteAction'
+        _legacy_controller: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_link: 'AdminDocumentTypeControllerLegacyClass'
+        _legacy_parameters:
+            id_documenttype: recordId
+    requirements:
+        recordId: \d+

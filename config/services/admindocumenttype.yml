@@ -1,0 +1,92 @@
+#
+# 2013-2019 Frédéric BENOIST
+#
+# NOTICE OF LICENSE
+#
+# This source file is subject to the Academic Free License (AFL 3.0)
+# Use, copy, modification or distribution of this source file without written
+# license agreement from Frédéric BENOIST is strictly forbidden.
+#
+# INFORMATION SUR LA LICENCE D'UTILISATION
+#
+# L'utilisation de ce fichier source est soumise a une licence Academic Free License (AFL 3.0)
+# Toute utilisation, reproduction, modification ou distribution du present
+# fichier source sans contrat de licence ecrit de Frédéric BENOIST est
+# expressement interdite.
+#
+#  @author    Frédéric BENOIST
+#  @copyright 2013-2019 Frédéric BENOIST <https://www.fbenoist.com>
+#  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+#
+
+services:
+    # Form
+    fbsample_legacyvsmodern.admindocumenttype.admindocumenttypeform.form_type:
+        class: 'FBenoist\FbSampleLegacyVsModern\Form\AdminDocumentTypeFormType'
+        parent: 'form.type.translatable.aware'
+        public: true
+        arguments:
+            - '@=service("prestashop.adapter.data_provider.currency").getDefaultCurrencyIsoCode()'
+        tags:
+            - { name: form.type }
+
+    # Form DataProvider
+    fbsample_legacyvsmodern.admindocumenttype.admindocumenttypeform.data_provider:
+        class: 'FBenoist\FbSampleLegacyVsModern\Form\AdminDocumentTypeDataProvider'
+        public: true
+
+    # Form DataHandler
+    fbsample_legacyvsmodern.admindocumenttype.admindocumenttypeform.data_handler:
+        class: 'FBenoist\FbSampleLegacyVsModern\Form\AdminDocumentTypeDataHandler'
+        public: true
+
+    # Form Handler
+    fbsample_legacyvsmodern.admindocumenttype.admindocumenttypeform.form_handler:
+        class: 'PrestaShop\PrestaShop\Core\Form\IdentifiableObject\Handler\FormHandler'
+        factory: 'prestashop.core.form.identifiable_object.handler.form_handler_factory:create'
+        arguments:
+          - '@fbsample_legacyvsmodern.admindocumenttype.admindocumenttypeform.data_handler'
+
+    # Form Builder
+    fbsample_legacyvsmodern.admindocumenttype.admindocumenttypeform.form_builder:
+        class: 'PrestaShop\PrestaShop\Core\Form\IdentifiableObject\Builder\FormBuilder'
+        factory: 'prestashop.core.form.builder.form_builder_factory:create'
+        arguments:
+          - 'FBenoist\FbSampleLegacyVsModern\Form\AdminDocumentTypeFormType'
+          - '@fbsample_legacyvsmodern.admindocumenttype.admindocumenttypeform.data_provider'
+
+    # Grid definition factory
+    fbsample_legacyvsmodern.admindocumenttype.grid_definition_factory:
+        class: 'FBenoist\FbSampleLegacyVsModern\Grid\AdminDocumentTypeGridDefinitionFactory'
+        parent: 'prestashop.core.grid.definition.factory.abstract_grid_definition'
+        arguments:
+            - "@=service('router').generate('admin_common_reset_search', {'controller': 'admindocumenttype', 'action': 'index'})"
+            - "@=service('router').generate('fbsample_legacyvsmodern_admindocumenttype_index')"
+        public: true
+
+    # Grid query builder
+    fbsample_legacyvsmodern.admindocumenttype.admindocumenttypegrid.query_builder:
+        class: 'FBenoist\FbSampleLegacyVsModern\Grid\AdminDocumentTypeGridQueryBuilder'
+        parent: 'prestashop.core.grid.abstract_query_builder'
+        arguments:
+            - "@=service('prestashop.adapter.legacy.context').getContext().language.id"
+            - "@=service('prestashop.adapter.legacy.context').getContext().shop.id"
+        public: true
+
+    # Grid data provider
+    fbsample_legacyvsmodern.admindocumenttype.data_factory:
+        class: 'PrestaShop\PrestaShop\Core\Grid\Data\Factory\DoctrineGridDataFactory'
+        arguments:
+            - '@fbsample_legacyvsmodern.admindocumenttype.admindocumenttypegrid.query_builder'
+            - '@prestashop.core.hook.dispatcher'
+            - '@prestashop.core.grid.query.doctrine_query_parser'
+            - 'admindocumenttypegrid'
+
+    # Grid factory which will use our grid definition factory and data provider services
+    fbsample_legacyvsmodern.admindocumenttype.grid_factory:
+        class: 'PrestaShop\PrestaShop\Core\Grid\GridFactory'
+        arguments:
+            - '@fbsample_legacyvsmodern.admindocumenttype.grid_definition_factory'
+            - '@fbsample_legacyvsmodern.admindocumenttype.data_factory'
+            - '@prestashop.core.grid.filter.form_factory'
+            - '@prestashop.core.hook.dispatcher'

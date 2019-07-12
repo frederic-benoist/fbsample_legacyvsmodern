@@ -1,0 +1,55 @@
+{#
+ # 2013-2019 Frédéric BENOIST
+ #
+ # NOTICE OF LICENSE
+ #
+ # This source file is subject to the Academic Free License (AFL 3.0)
+ # Use, copy, modification or distribution of this source file without written
+ # license agreement from Frédéric BENOIST is strictly forbidden.
+ #
+ # INFORMATION SUR LA LICENCE D'UTILISATION
+ #
+ # L'utilisation de ce fichier source est soumise a une licence Academic Free License (AFL 3.0)
+ # Toute utilisation, reproduction, modification ou distribution du present
+ # fichier source sans contrat de licence ecrit de Frédéric BENOIST est
+ # expressement interdite.
+ #
+ #  @author    Frédéric BENOIST
+ #  @copyright 2013-2019 Frédéric BENOIST <https://www.fbenoist.com>
+ #  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ #}
+
+
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+
+{% trans_default_domain "Module.fbsample_legacyvsmodern.Admin" %}
+
+{% set layoutHeaderToolbarBtn = {
+    'add': {
+      'href': path('fbsample_legacyvsmodern_admindocumenttype_add'),
+      'desc': 'Add new document type'|trans({}, 'Module.fbsample_legacyvsmodern.Admin'),
+      'icon': 'add_circle_outline'
+    }
+  } %}
+
+{% block content %}
+  <div class="row">
+    <div class="col">
+      {% include '@PrestaShop/Admin/Common/Grid/grid_panel.html.twig' with {'grid': AdminDocumentTypeGrid} %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+
+  <link rel="stylesheet" href="{{ asset('../modules/fbsample_legacyvsmodern/views/assets/css/admindocumenttypecontroller.css') }}">
+{% endblock %}
+
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('../modules/fbsample_legacyvsmodern/views/assets/js/admindocumenttypecontroller.js') }}"></script>
+{% endblock %}
+
+
