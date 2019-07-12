@@ -1,4 +1,5 @@
 *.xml
 composer.lock
+/vendor/
 package-lock.json
 node_modules/
