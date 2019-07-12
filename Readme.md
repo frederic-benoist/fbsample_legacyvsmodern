@@ -2,9 +2,9 @@
 
 Show legacy and modern back office controller
 
-Model : ObjectModel
-Legacy controller with HelperForm and HelperList
-Modern controller with Grid and Form
+- Model : ObjectModel
+- Legacy controller with HelperForm and HelperList
+- Modern controller with Grid and Form
 
 ==For PrestaShop Development training only.==
 
