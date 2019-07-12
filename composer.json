@@ -1,6 +1,6 @@
  {
     "name": "frederic-benoist/fbsample_legacyvsmodern",
-    "description": "The module description",
+    "description": "Legacy VS Modern PrestaShop admin controller",
     "authors": [
       {
         "name": "Frédéric BENOIST",
@@ -17,5 +17,6 @@
       "psr-4": {"FBenoist\\FbSampleLegacyVsModern\\": "src/"}
     },
     "type": "prestashop-module",
-    "license": "AFL-3.0"
+    "license": "AFL-3.0",
+    "homepage": "https://github.com/frederic-benoist/fbsample-legacyvsmodern"
   }
